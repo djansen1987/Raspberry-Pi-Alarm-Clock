@@ -1,6 +1,7 @@
 # Preview:
-![Alt text](/images/raspberrypipreview.jpg/?raw=true "Optional Title")
+https://djansen1987.github.io/Raspberry-Pi-Alarm-Clock/
 ![Alt text](/images/webpreview.png?raw=true "Optional Title")
+![Alt text](/images/raspberrypipreview.jpg/?raw=true "Optional Title")
 
 
 # Install Raspbian:
