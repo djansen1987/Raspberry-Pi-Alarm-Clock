@@ -22,7 +22,9 @@ $(document).ready(function(){
         state = $(this).data("ha-state")
         entity_id = $(this).data("ha-entity_id").toString().replace((domain+"."),"")
         console.log(domain,state,entity_id)
-        homeassitant(domain,state,entity_id)
+        if(hastate == 1){
+            homeassitant(domain,state,entity_id)
+        }
         
     });
     $("#alarm-icon").hide()

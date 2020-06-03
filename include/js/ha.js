@@ -59,7 +59,12 @@ if(hastate == 1){
     
     
     
-    function homeassitant(domain,state,entity_id,data,time){
+    
+}
+
+function homeassitant(domain,state,entity_id,data,time){
+    if(hastate == 1){
+
         if(data){
             console.log(data+"-update:   ",domain,state,entity_id,data,time)
             ha.send('{"id": '+hamessageid+',"type": "call_service","domain": "'+domain+'","service": "'+state+'","service_data": {  "entity_id": "'+domain+'.'+entity_id+'", "'+data+'": "'+time+'"}}')
@@ -68,5 +73,4 @@ if(hastate == 1){
         }
         hamessageid ++
     }
-
 }
