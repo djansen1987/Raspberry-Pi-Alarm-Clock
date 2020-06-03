@@ -9,6 +9,10 @@ var audioplaying = 0;
 var testalarm = 0
 var spotifystate = 0
 
+var hastate
+var mqttState
+var noderedstate
+
 if(localStorage['ringtone']){
     ringtone = localStorage['ringtone'];
 }else{
