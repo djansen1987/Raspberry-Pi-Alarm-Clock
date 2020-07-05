@@ -107,3 +107,9 @@ function alarmoff(){
     alarmstate = 0
     localStorage["alarmstate"] = alarmstate
 }
+
+function audioswitch(status){
+    $.getJSON("http://"+alarmclockip+":1880/audio?val="+status, function(result){
+        console.log(result)
+    })
+}

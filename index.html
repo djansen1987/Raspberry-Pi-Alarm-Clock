@@ -25,8 +25,13 @@
         <div class="row h-100 justify-content-center align-items-center">
             <!-- settings overlay -->
             <div id="menu-overlay" style="display: none;">
-                <div id="menu-close" class="pull-right closemenu">
-                    <i class="far fa-times-circle"></i>
+                <div id="menu-buttons" class="menu-buttons">
+                    <div id="menu-close" class="closemenu">
+                        <i class="far fa-times-circle"></i>
+                    </div>
+                    <div id="ha-status" class="ha-status">
+                        <i id="ha-status-icon" class="fas fa-circle red"></i>
+                    </div>
                 </div>
 
                 <!-- menu settings -->
@@ -150,8 +155,12 @@
             </div>
             <!--  -->
             <!-- Alarm icon if alarm clock is on -->
-            <div id="alarm-icon" class="col fixed-bottom" style="display: none;">
-                <img id="alarm-clock-img" src="images/alarm-icon-faebd7.png" class="float-right">
+            <div id="status-icon-main" class="col" >
+                <i id="ha-status-icon-main" class="ha-status-icon fas fa-circle red float-right"></i>
+            </div>
+            <div id="alarm-icon" class="col" style="display: none;">
+                <!-- <img id="alarm-clock-img" src="images/alarm-icon-faebd7.png" class="float-right"> -->
+                <i class="far fa-clock float-right"></i>
             </div>
             <!--  -->
         </div>

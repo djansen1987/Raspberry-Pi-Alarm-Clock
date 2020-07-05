@@ -7,8 +7,8 @@ if(hastate == 1){
             console.log(str)
         }
     };
-    
-    ha = new WebSocket(haprotocol+'://'+hahostname+'/api/websocket');
+    connect();
+    // ha = new WebSocket(haprotocol+'://'+hahostname+'/api/websocket');
     
     ha.addEventListener('open', function (event) {
         ha.send('{"type": "auth","access_token": "'+haToken+'"}\n');
@@ -54,8 +54,8 @@ if(hastate == 1){
         
     };
 
-    ha.onclose = function() {HAmsg('Home Assistant Socket closed');};
-    ha.onopen = function() {HAmsg('Home Assistant Connected...');};
+    // ha.onclose = function() {HAmsg('Home Assistant Socket closed');};
+    // ha.onopen = function() {HAmsg('Home Assistant Connected...');};
     
     
     
@@ -74,3 +74,53 @@ function homeassitant(domain,state,entity_id,data,time){
         hamessageid ++
     }
 }
+
+
+function connect() {
+
+    $(".ha-status-icon").removeClass('red')
+    $(".ha-status-icon").removeClass('orange')
+    $(".ha-status-icon").removeClass('green')
+    $(".ha-status-icon").addClass('orange')
+
+    ha = new WebSocket(haprotocol+'://'+hahostname+'/api/websocket');
+
+    ha.onopen = function() {
+        HAmsg('Home Assistant Connected...');
+
+        $(".ha-status-icon").removeClass('red')
+        $(".ha-status-icon").removeClass('orange')
+        $(".ha-status-icon").removeClass('green')
+        $(".ha-status-icon").addClass('green')
+      // subscribe to some channels
+    //   ha.send(JSON.stringify({
+    //       //.... some message the I must send when I connect ....
+    //   }));
+    };
+  
+    // ha.onmessage = function(e) {
+    //   console.log('Message:', e.data);
+    // };
+  
+    ha.onclose = function(e) {
+        $(".ha-status-icon").removeClass('red')
+        $(".ha-status-icon").removeClass('orange')
+        $(".ha-status-icon").removeClass('green')
+        $(".ha-status-icon").addClass('red')
+        console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+        setTimeout(function() {
+            connect();
+        }, 1000);
+    };
+  
+    ha.onerror = function(err) {
+      console.error('Socket encountered error: ', err.message, 'Closing socket');
+      $(".ha-status-icon").removeClass('red')
+      $(".ha-status-icon").removeClass('orange')
+      $(".ha-status-icon").removeClass('green')
+      $(".ha-status-icon").addClass('red')
+      ha.close();
+    };
+  }
+  
+  

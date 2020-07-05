@@ -35,14 +35,14 @@ body{
   font-size:180px;
   cursor: none; 
 }
-#alarm-icon{
+/* #alarm-icon{
   margin-top: 176px;
   bottom: 10px;
   left: -25px;
-}
-#alarm-icon img{
+} */
+/* #alarm-icon img{
   width: 40px;
-}
+} */
 #menu-overlay {
   z-index: 999;
   position: fixed;
@@ -98,10 +98,10 @@ input.nmpd-display {
 table.nmpd-grid {
   margin: -30px;
 }
-#menu-buttons{
+/* #menu-buttons{
   margin-top: 50px;
   margin-left: 50px;
-}
+} */
 .playringtone {
   margin-top: 15px;
 }
@@ -177,9 +177,41 @@ table.nmpd-grid {
   background:#fff;
 }
 .closemenu{
-  text-align: right;
+  /* text-align: right */
+  float: right;
   padding-right: 15px;
   font-size: xx-large;
+}
+.ha-status{
+  float: left;
+  padding-left: 15px;
+  font-size: xx-large;
+}
+.red{
+  color: var(--sp-red-color);
+}
+.green{
+  color: var(--sp-green-color);
+}
+.orange{
+  color: var(--sp-orange-color);
+}
+#status-icon-main{
+  position: fixed;
+  right: 2px;
+  bottom: 20px;
+  font-size: 37px;
+}
+#alarm-icon{
+  position: fixed;
+  right: 0px;
+  bottom: 20px;
+  font-size: 40px;
+}
+#menu-buttons{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 50px;
 }
 .when-alrm-ring{
   display:none;

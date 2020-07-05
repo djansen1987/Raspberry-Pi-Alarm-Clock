@@ -8,6 +8,7 @@ var audio;
 var audioplaying = 0;
 var testalarm = 0
 var spotifystate = 0
+var alarmclockip = "192.168.13.34"
 
 var hastate
 var mqttState
@@ -67,7 +68,6 @@ $(document).ready(function(){
 
     
     $(".closemenu").click(function(){
-        console.log('click')
         HideMenus();
     })
 
@@ -82,7 +82,7 @@ $(document).ready(function(){
     })
 
     function HideMenus(){
-        console.log("hide")
+        // console.log("hide")
         $("#menu-overlay").hide("fast");
         $("#menu-settings").hide()
         $("#menu-movie").hide();
@@ -103,7 +103,7 @@ $(document).ready(function(){
 
 
     $("#sliderscreen").change(function(){
-            $.getJSON("http://192.168.13.34:1880/screen?brightness="+this.value, function(result){
+            $.getJSON("http://"+alarmclockip+":1880/screen?brightness="+this.value, function(result){
                 console.log(result)
             });
         console.log(this.value)
@@ -160,12 +160,12 @@ $(document).ready(function(){
         homeassitant("media_player","media_stop","slaapkamer_2")
     });
     $('#poweroff').click(function(){
-        $.getJSON("http://127.0.0.1:1880/power?off=1", function(result){
+        $.getJSON("http://"+alarmclockip+":1880/power?off=1", function(result){
             console.log(result)
         })
     });
     $('#reboot').click(function(){
-        $.getJSON("http://127.0.0.1:1880/reboot?reboot=1", function(result){
+        $.getJSON("http://"+alarmclockip+":1880/reboot?reboot=1", function(result){
             console.log(result)
         })
     });
