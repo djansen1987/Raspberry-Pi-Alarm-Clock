@@ -12,7 +12,11 @@ function AlarmTrigger(){
     if(spotifystate == 1){
         if(audioplaying == 0){
             homeassitant("script","turn_on","1590188530681")
+            $("#btn-04").removeClass('green')
+            $("#btn-04").removeClass('orange')
+            $("#btn-04").addClass('green')
             audioplaying = 1
+            spotifyplaying = 1
         }
     }else{
         if(audioplaying == 0){
@@ -99,7 +103,21 @@ function alarmoff(){
     audioplaying = 0
     audioswitch(0)
     if(spotifystate == 1){
-        homeassitant("media_player","media_pause","spotify_1148145536")
+        // homeassitant("media_player","media_pause","spotify_1148145536")
+        $("#btn-04").removeClass('green')
+        $("#btn-04").addClass('orange')
+        // homeassitant("media_player","media_pause","spotify_1148145536")
+        $.ajax({
+            url: "https://hooks.nabu.casa/gAAAAABfAfNjaiFfBX960e2kxHehjxV9CSFK4aYhCHbiDyYrePr_tHiF5_-TMEix4jiUGqZltTiT741KBOZKbA6YOg5Q-5rX92n0F0iEUdMUM14ntMhSSZd2T4nmJeJ-b5hgJ8oeZmx9rDOH9sMMjStr6Vsw8tVWXLx6NlD06zrd6EYzohbbWjE=",
+            type: "POST",
+            complete: function(){
+                $("#btn-04").removeClass('green')
+                $("#btn-04").removeClass('orange')
+                console.log("Spotify stopped succesfull")
+            }
+          });
+        audioswitch(0)
+        spotifyplaying = 0
     }
     $("#alarm-state").prop("checked", false)
     $("#alarm-icon").hide()

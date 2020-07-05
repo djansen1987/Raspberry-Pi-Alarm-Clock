@@ -47,26 +47,28 @@ $(document).ready(function(){
     $("#btn-04").click(function(){
         console.log("#btn-04")
         if (spotifyplaying == 0){
-            $("#btn-04").removeClass('green')
-            $("#btn-04").removeClass('orange')
-            $("#btn-04").addClass('green')
+            // $("#btn-04").removeClass('green')
+            // $("#btn-04").removeClass('orange')
+            // $("#btn-04").addClass('green')
             spotifyplaying = 1
-            audioswitch(1)
-            homeassitant("script","turn_on","1590188530681")
-
+            // audioswitch(1)
+            // homeassitant("script","turn_on","1590188530681")
+            AlarmTrigger()
         }else{
-            $("#btn-04").addClass('orange')
-            // homeassitant("media_player","media_pause","spotify_1148145536")
-            $.ajax({
-                url: "https://hooks.nabu.casa/gAAAAABfAfNjaiFfBX960e2kxHehjxV9CSFK4aYhCHbiDyYrePr_tHiF5_-TMEix4jiUGqZltTiT741KBOZKbA6YOg5Q-5rX92n0F0iEUdMUM14ntMhSSZd2T4nmJeJ-b5hgJ8oeZmx9rDOH9sMMjStr6Vsw8tVWXLx6NlD06zrd6EYzohbbWjE=",
-                type: "POST",
-                complete: function(){
-                    $("#btn-04").removeClass('green')
-                    $("#btn-04").removeClass('orange')
-                    console.log("Spotify stopped succesfull")
-                }
-              });
-            audioswitch(0)
+            // $("#btn-04").removeClass('green')
+            // $("#btn-04").addClass('orange')
+            // // homeassitant("media_player","media_pause","spotify_1148145536")
+            // $.ajax({
+            //     url: "https://hooks.nabu.casa/gAAAAABfAfNjaiFfBX960e2kxHehjxV9CSFK4aYhCHbiDyYrePr_tHiF5_-TMEix4jiUGqZltTiT741KBOZKbA6YOg5Q-5rX92n0F0iEUdMUM14ntMhSSZd2T4nmJeJ-b5hgJ8oeZmx9rDOH9sMMjStr6Vsw8tVWXLx6NlD06zrd6EYzohbbWjE=",
+            //     type: "POST",
+            //     complete: function(){
+            //         $("#btn-04").removeClass('green')
+            //         $("#btn-04").removeClass('orange')
+            //         console.log("Spotify stopped succesfull")
+            //     }
+            //   });
+            // audioswitch(0)
+            alarmoff()
             spotifyplaying = 0
         }
     })
