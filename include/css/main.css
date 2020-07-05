@@ -102,9 +102,9 @@ table.nmpd-grid {
   margin-top: 50px;
   margin-left: 50px;
 } */
-.playringtone {
+/* .playringtone {
   margin-top: 15px;
-}
+} */
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -212,6 +212,9 @@ table.nmpd-grid {
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 50px;
+}
+.btn{
+  margin-right: 5px;
 }
 .when-alrm-ring{
   display:none;

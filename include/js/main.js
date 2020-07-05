@@ -130,6 +130,10 @@ $(document).ready(function(){
 
     if(spotifystate == 1){
         $("#spotify-state").prop("checked", true)
+        $("#ringtone-select").hide()
+        $(".playringtone").hide()
+
+        // ringtone = "250-milliseconds-of-silence.mp3"
         spotifystate = 1
     }else if(spotifystate == 0){
         $("#spotify-state").prop("checked", false)
@@ -139,10 +143,15 @@ $(document).ready(function(){
     $('#spotify-state').click(function(){
         if($(this).prop("checked") == true){
             spotifystate = 1
+            $("#ringtone-select").hide()
+            $(".playringtone").hide()
+            // ringtone = "250-milliseconds-of-silence.mp3"
             // homeassitant("input_boolean","turn_on","alarmclock")
             localStorage["spotifystate"] = spotifystate
         }
         else if($(this).prop("checked") == false){
+            $("#ringtone-select").show()
+            $(".playringtone").show()
             spotifystate = 0
             localStorage["spotifystate"] = spotifystate
         }
