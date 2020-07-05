@@ -100,6 +100,7 @@ $("#clock-wrapper").click(function(){
 })
 
 function alarmoff(){
+    alarmstate = 0
     if(audioplaying == 1){
         audioplaying = 0
         audioswitch(0)
@@ -124,7 +125,6 @@ function alarmoff(){
         $("#alarm-icon").hide()
         homeassitant("input_boolean","turn_off","alarmclock")
         StopAudio()
-        alarmstate = 0
         localStorage["alarmstate"] = alarmstate
     }
 }
