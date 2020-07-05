@@ -160,7 +160,12 @@ $(document).ready(function(){
         homeassitant("media_player","media_stop","slaapkamer_2")
     });
     $('#poweroff').click(function(){
-        $.getJSON("http://192.168.13.34:1880/power?off=1", function(result){
+        $.getJSON("http://127.0.0.1:1880/power?off=1", function(result){
+            console.log(result)
+        })
+    });
+    $('#reboot').click(function(){
+        $.getJSON("http://127.0.0.1:1880/reboot?reboot=1", function(result){
             console.log(result)
         })
     });
