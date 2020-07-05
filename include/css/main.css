@@ -200,13 +200,13 @@ table.nmpd-grid {
   position: fixed;
   right: 2px;
   bottom: 20px;
-  font-size: 37px;
+  font-size: 27px;
 }
 #alarm-icon{
   position: fixed;
   right: 0px;
   bottom: 20px;
-  font-size: 40px;
+  font-size: 30px;
 }
 #menu-buttons{
   padding-top: 5px;
