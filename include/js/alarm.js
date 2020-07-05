@@ -95,36 +95,38 @@ function StopAudio(){
 
 $("#clock-wrapper").click(function(){
     if(audioplaying == 1){
-        alarmoff()
+        // alarmoff()
     }
 })
 
 function alarmoff(){
-    audioplaying = 0
-    audioswitch(0)
-    if(spotifystate == 1){
-        // homeassitant("media_player","media_pause","spotify_1148145536")
-        $("#btn-04").removeClass('green')
-        $("#btn-04").addClass('orange')
-        // homeassitant("media_player","media_pause","spotify_1148145536")
-        $.ajax({
-            url: "https://hooks.nabu.casa/gAAAAABfAfNjaiFfBX960e2kxHehjxV9CSFK4aYhCHbiDyYrePr_tHiF5_-TMEix4jiUGqZltTiT741KBOZKbA6YOg5Q-5rX92n0F0iEUdMUM14ntMhSSZd2T4nmJeJ-b5hgJ8oeZmx9rDOH9sMMjStr6Vsw8tVWXLx6NlD06zrd6EYzohbbWjE=",
-            type: "POST",
-            complete: function(){
-                $("#btn-04").removeClass('green')
-                $("#btn-04").removeClass('orange')
-                console.log("Spotify stopped succesfull")
-            }
-          });
+    if(audioplaying == 1){
+        audioplaying = 0
         audioswitch(0)
-        spotifyplaying = 0
+        if(spotifystate == 1){
+            // homeassitant("media_player","media_pause","spotify_1148145536")
+            $("#btn-04").removeClass('green')
+            $("#btn-04").addClass('orange')
+            // homeassitant("media_player","media_pause","spotify_1148145536")
+            $.ajax({
+                url: "https://hooks.nabu.casa/gAAAAABfAfNjaiFfBX960e2kxHehjxV9CSFK4aYhCHbiDyYrePr_tHiF5_-TMEix4jiUGqZltTiT741KBOZKbA6YOg5Q-5rX92n0F0iEUdMUM14ntMhSSZd2T4nmJeJ-b5hgJ8oeZmx9rDOH9sMMjStr6Vsw8tVWXLx6NlD06zrd6EYzohbbWjE=",
+                type: "POST",
+                complete: function(){
+                    $("#btn-04").removeClass('green')
+                    $("#btn-04").removeClass('orange')
+                    console.log("Spotify stopped succesfull")
+                }
+            });
+            audioswitch(0)
+            spotifyplaying = 0
+        }
+        $("#alarm-state").prop("checked", false)
+        $("#alarm-icon").hide()
+        homeassitant("input_boolean","turn_off","alarmclock")
+        StopAudio()
+        alarmstate = 0
+        localStorage["alarmstate"] = alarmstate
     }
-    $("#alarm-state").prop("checked", false)
-    $("#alarm-icon").hide()
-    homeassitant("input_boolean","turn_off","alarmclock")
-    StopAudio()
-    alarmstate = 0
-    localStorage["alarmstate"] = alarmstate
 }
 
 function audioswitch(status){
