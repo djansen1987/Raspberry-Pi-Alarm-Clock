@@ -20,7 +20,7 @@ function AlarmTrigger(){
             playRingtone("Audio/"+ringtone)
         }
     }
-
+    audioswitch(1)
 }
 
 function playRingtone(ringtonesource) {
@@ -97,6 +97,7 @@ $("#clock-wrapper").click(function(){
 
 function alarmoff(){
     audioplaying = 0
+    audioswitch(0)
     if(spotifystate == 1){
         homeassitant("media_player","media_pause","spotify_1148145536")
     }
